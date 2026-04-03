@@ -68,7 +68,7 @@ The system is designed to simulate real-world autonomous robotics challenges suc
 
 ## 🎥 Demo
 
-👉 [Add your demo video link here]
+👉 [YET_TO_BE_ADDED]
 
 ---
 
@@ -90,7 +90,7 @@ The system is designed to simulate real-world autonomous robotics challenges suc
 ### Prerequisites:
 - ROS2 (Iron or Humble)
 - Ubuntu 22.04
-- Python 3.x
+- Python 3.10
 - OpenCV
 
 ### Steps:
