@@ -73,14 +73,7 @@ The system is designed to simulate real-world autonomous robotics challenges suc
 ---
 
 ## 📁 Project Structure
-/src
-├── perception_node/
-├── decision_node/
-├── control_node/
-/arduino
-├── motor_control.ino
-/config
-/launch
+[YET_TO_BE_ADDED]
 
 
 ---
