@@ -8,15 +8,15 @@ Project at a glance:
 <table align="center">
   <tr>
     <td align="center">
-      <img src="images_videos/crashed.png" width="250"/><br>
+      <img src="image_videos/crashed.png" width="250"/><br>
       <b>Crashed</b>
     </td>
     <td align="center">
-      <img src="images_videos/lag.png" width="250"/><br>
+      <img src="image_videos/lag.png" width="250"/><br>
       <b>Avoided Crash (Lag)</b>
     </td>
     <td align="center">
-      <img src="images_videos/final.png" width="250"/><br>
+      <img src="image_videos/final.png" width="250"/><br>
       <b>Final (No Lag)</b>
     </td>
   </tr>
