@@ -6,6 +6,13 @@ __pycache__/
 ros2_ws/build/
 ros2_ws/install/
 ros2_ws/log/
+ros2_ws/src/camera_pkg/test/
+ros2_ws/src/control_pkg/test/
+ros2_ws/src/lane_detection_pkg/test/
+ros2_ws/src/localization_pkg/test/
+ros2_ws/src/perception_pkg/test/
+ros2_ws/src/planning_pkg/test/
+ros2_ws/src/serial_pkg/test/
 
 # General
 *.log
