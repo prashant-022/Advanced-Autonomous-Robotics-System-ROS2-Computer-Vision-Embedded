@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'serial_node = serial_pkg.serial_node:main',
         ],
     },
 )

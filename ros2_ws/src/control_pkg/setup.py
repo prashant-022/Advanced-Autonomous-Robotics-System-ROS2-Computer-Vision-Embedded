@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'pid_node = control_pkg.pid_node:main',
         ],
     },
 )

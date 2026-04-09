@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'camera_node = camera_pkg.camera_node:main',
         ],
     },
 )
