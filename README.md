@@ -94,11 +94,41 @@ ros2_ws/src/
 - No speed control; direction-only
 - Clean build but fundamentally limited
 
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="image_videos/old_unstable_setup.gif" width="250"/><br>
+      <b>Old-Unstable-Setup</b>
+    </td>
+    <td align="center">
+      <img src="image_videos/terminal_output_old_setup.gif" width="250"/><br>
+      <b>Terminal-Output-of-Old-Setup</b>
+    </td>
+  </tr>
+</table>
+
 **v2 — Four-wheel drive with encoder motors (current)**
 - Differential drive with 4 wheels
 - Encoder feedback enables PID speed control
 - Better stability, especially during turns
 - Wiring is messier, capabilities are greater
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="image_videos/new_setup.png" width="250"/><br>
+      <b>New-Hardware-Setup</b>
+    </td>
+    <td align="center">
+      <img src="image_videos/smooth.gif" width="250"/><br>
+      <b>Smooth-Movement-Within-Lane</b>
+    </td>
+    <td align="center">
+      <img src="image_videos/terminal_output_new_setup.gif" width="250"/><br>
+      <b>Terminal-View-of-New-Algorithm-&-Hardware</b>
+    </td>
+  </tr>
+</table>
 
 ---
 
