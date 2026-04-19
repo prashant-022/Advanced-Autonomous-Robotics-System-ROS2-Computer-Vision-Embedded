@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'pid_node = control_pkg.pid_node:main',
+            'odometry_node = control_pkg.odometry_node:main',
         ],
     },
 )

@@ -49,7 +49,7 @@ class PIDNode(Node):
             return
         
         error = msg.data
-        error = error/2
+        # error = error/2
         self.last_seen_time = current_time
                 
         ## State --> Drive:
@@ -74,7 +74,7 @@ class PIDNode(Node):
         
         ## Speed control
         turn_strength = abs(correction)
-        base_speed = int(110 - turn_strength*1.5) 
+        base_speed = int(120 - turn_strength*0.7) 
         
         ## Clamp:
         base_speed = max(70, min(130, base_speed))
