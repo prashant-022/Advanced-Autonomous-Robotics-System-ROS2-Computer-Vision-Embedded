@@ -81,7 +81,8 @@ ros2_ws/src/
 ├── localization_pkg/
 ├── planning_pkg/   
 ├── interfaces_pkg/ 
-├── robot_bringup   
+├── imu_pkg/
+├── robot_bringup  
 ```
 
 ---
@@ -168,7 +169,10 @@ TO DO
 - [x] UART communication — stable
 - [x] Hardware v2 (encoder motors) — assembled and tested
 - [x] PID tuning — in progress
-- [ ] IMU integration in ROS2 pipeline — in progress
+- [x] IMU integration in ROS2 pipeline — stable
+- [x] Encoder motor output is utilized in ROS2 pipeline — stable
+- [x] Odometry is performed using encoder data - stable
+- [ ] Extended Kalman Filter (EKF) integration for sensor fusion - in progress
 - [ ] Full lane-following closed loop — in progress
 - [ ] ROS2 node-based architecture — in progress
 - [ ] Obstacle detection — planned
