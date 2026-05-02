@@ -26,20 +26,23 @@ if not cap.isOpened():
 print("Camera ready")
 
 # ---------------- PARAMETERS ----------------
+## Camera Parameters
+STARTUP_DELAY = 3
+start_time = time.time()
+
+## Control Parameters
 DEAD_ZONE = 40
 ALPHA = 0.2
 CONTROL_INTERVAL = 0.02
-STARTUP_DELAY = 3   # important
 last_time = 0
-start_time = time.time()
 smooth_error = None
 last_cmd = None
 last_left = 0
 last_right = 0
 
-# ---- PID PARAMETERS ----
-Kp = 0.001
-Kd = 0.0001
+# PID Parameters
+Kp = 0.01
+Kd = 0.001
 Ki = 0.0
 
 prev_error = 0
@@ -66,7 +69,7 @@ while True:
         cv2.putText(frame, "Stabilizing...",
                     (20, 40), cv2.FONT_HERSHEY_SIMPLEX,
                     1, (0, 0, 255), 2)
-        cv2.imshow("Frame", frame)
+        # cv2.imshow("Frame", frame)
         cv2.waitKey(1)
         continue
 
@@ -174,8 +177,8 @@ while True:
                     (20,40), cv2.FONT_HERSHEY_SIMPLEX,
                     1,(0,0,255),2)
 
-    cv2.imshow("Frame", frame)
-    cv2.imshow("ROI", roi_frame)
+    # cv2.imshow("Frame", frame)
+    # cv2.imshow("ROI", roi_frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
@@ -185,4 +188,4 @@ ser.write(b"0,0\n")
 time.sleep(0.1)
 cap.release()
 cv2.destroyAllWindows()
-ser.close()
+ser.close() 
