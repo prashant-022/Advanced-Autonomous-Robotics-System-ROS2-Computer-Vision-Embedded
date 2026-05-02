@@ -167,9 +167,10 @@ TO DO
 - [x] Camera pipeline — stable
 - [x] UART communication — stable
 - [x] Hardware v2 (encoder motors) — assembled and tested
-- [ ] PID tuning — in progress
+- [x] PID tuning — in progress
+- [ ] IMU integration in ROS2 pipeline — in progress
 - [ ] Full lane-following closed loop — in progress
-- [ ] ROS2 node-based architecture — planned
+- [ ] ROS2 node-based architecture — in progress
 - [ ] Obstacle detection — planned
 
 ---
