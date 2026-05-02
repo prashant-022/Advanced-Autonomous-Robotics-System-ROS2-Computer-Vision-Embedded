@@ -4,6 +4,7 @@ from std_msgs.msg import Int32MultiArray
 from nav_msgs.msg import Odometry
 import math
 import time
+import tf_transformations
 
 class OdometryNode(Node):
     def __init__(self):
@@ -16,11 +17,7 @@ class OdometryNode(Node):
             10
         )
 
-        self.publisher = self.create_publisher(
-            Odometry,
-            '/odom',
-            10
-        )
+        self.publisher = self.create_publisher(Odometry, '/odom', 10)
 
         # Robot parameters (VERY IMPORTANT)
         self.wheel_radius = 0.035      # meters (adjust)
@@ -41,6 +38,7 @@ class OdometryNode(Node):
 
         current_time = time.time()
         dt = current_time - self.prev_time
+        self.prev_time = current_time
 
         if dt == 0:
             return
@@ -51,25 +49,64 @@ class OdometryNode(Node):
 
         self.prev_left = left_ticks
         self.prev_right = right_ticks
-        self.prev_time = current_time
 
         # Robot motion
-        dc = (dl + dr) / 2
+        dc = (dl + dr) / 2.0
         dtheta = (dr - dl) / self.wheel_base
 
         # Update pose
         self.x += dc * math.cos(self.theta)
         self.y += dc * math.sin(self.theta)
         self.theta += dtheta
+        
+         # Normalize theta
+        self.theta = math.atan2(math.sin(self.theta), math.cos(self.theta))
 
-        # Publish
+        # Velocities
+        v = dc / dt
+        omega = dtheta / dt
+
+        # Create message
         odom = Odometry()
+
+        # Header
+        odom.header.stamp = self.get_clock().now().to_msg()
+        odom.header.frame_id = "odom"
+        odom.child_frame_id = "base_link"
+
+        # Position
         odom.pose.pose.position.x = self.x
         odom.pose.pose.position.y = self.y
 
-        # Simple orientation (2D)
-        odom.pose.pose.orientation.z = math.sin(self.theta / 2)
-        odom.pose.pose.orientation.w = math.cos(self.theta / 2)
+        q = tf_transformations.quaternion_from_euler(0, 0, self.theta)
+
+        odom.pose.pose.orientation.x = q[0]
+        odom.pose.pose.orientation.y = q[1]
+        odom.pose.pose.orientation.z = q[2]
+        odom.pose.pose.orientation.w = q[3]
+
+        # Velocity
+        odom.twist.twist.linear.x = v
+        odom.twist.twist.angular.z = omega
+
+        # Covariance (basic placeholder)
+        odom.pose.covariance = [
+            0.05, 0, 0, 0, 0, 0,
+            0, 0.05, 0, 0, 0, 0,
+            0, 0, 99999, 0, 0, 0,
+            0, 0, 0, 99999, 0, 0,
+            0, 0, 0, 0, 99999, 0,
+            0, 0, 0, 0, 0, 0.1
+        ]
+
+        odom.twist.covariance = [
+            0.1, 0, 0, 0, 0, 0,
+            0, 0.1, 0, 0, 0, 0,
+            0, 0, 99999, 0, 0, 0,
+            0, 0, 0, 99999, 0, 0,
+            0, 0, 0, 0, 99999, 0,
+            0, 0, 0, 0, 0, 0.2
+        ]
 
         self.publisher.publish(odom)
 
